@@ -1,0 +1,111 @@
+[
+	{
+		"name": "editorgrowth_event",
+		"comment": "Log events such as clicks",
+		"columns": [
+			{
+				"name": "ege_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true,
+					"autoincrement": true
+				}
+			},
+			{
+				"name": "ege_experiment",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 64
+				}
+			},
+			{
+				"name": "ege_identifier",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 16
+				}
+			},
+			{
+				"name": "ege_bucket",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 32
+				}
+			},
+			{
+				"name": "ege_action",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 32
+				}
+			},
+			{
+				"name": "ege_timestamp",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ege_experiment_identifier",
+				"columns": [
+					"ege_experiment",
+					"ege_identifier"
+				],
+				"unique": false
+			}
+		],
+		"pk": [
+			"ege_id"
+		]
+	},
+	{
+		"name": "editorgrowth_identity",
+		"comment": "Each registered or temporary actor a browser ID was seen logged in as",
+		"columns": [
+			{
+				"name": "egi_identifier",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 16
+				}
+			},
+			{
+				"name": "egi_actor",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "egi_timestamp",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "egi_actor",
+				"columns": [
+					"egi_actor"
+				],
+				"unique": false
+			}
+		],
+		"pk": [
+			"egi_identifier",
+			"egi_actor"
+		]
+	}
+]

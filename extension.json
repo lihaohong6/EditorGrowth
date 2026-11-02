@@ -1,0 +1,85 @@
+{
+	"name": "EditorGrowth",
+	"version": "0.1.0",
+	"author": [
+		"[https://github.com/lihaohong6 lihaohong6]"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:EditorGrowth",
+	"descriptionmsg": "editorgrowth-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.46.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\EditorGrowth\\": "includes/",
+		"MediaWiki\\Extension\\EditorGrowth\\Maintenance\\": "maintenance/"
+	},
+	"TestAutoloadNamespaces": {
+		"MediaWiki\\Extension\\EditorGrowth\\Tests\\": "tests/phpunit/integration/"
+	},
+	"MessagesDirs": {
+		"EditorGrowth": [
+			"i18n"
+		]
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\EditorGrowth\\Hooks",
+			"services": [
+				"MainWANObjectCache"
+			]
+		},
+		"schema": {
+			"class": "MediaWiki\\Extension\\EditorGrowth\\SchemaHooks"
+		}
+	},
+	"Hooks": {
+		"BeforePageDisplay": "main",
+		"LoadExtensionSchemaUpdates": "schema"
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules/experiments",
+		"remoteExtPath": "EditorGrowth/modules/experiments"
+	},
+	"ResourceModules": {
+		"ext.editorGrowth.singleEditTab": {
+			"styles": [
+				"single_edit_tab.less"
+			]
+		}
+	},
+	"RestRoutes": [
+		{
+			"path": "/editorgrowth/v0/event",
+			"method": "POST",
+			"class": "MediaWiki\\Extension\\EditorGrowth\\Rest\\EventHandler",
+			"services": [
+				"MainConfig",
+				"DBLoadBalancerFactory",
+				"ActorNormalization",
+				"UserFactory"
+			]
+		}
+	],
+	"RateLimits": {
+		"editorgrowth-event": {
+			"ip": [
+				60,
+				3600
+			],
+			"user": [
+				60,
+				3600
+			]
+		}
+	},
+	"config": {
+		"EditorGrowthEnabledExperiments": {
+			"description": "Names of the experiments that are activated.",
+			"value": []
+		}
+	},
+	"config_prefix": "wg",
+	"manifest_version": 2
+}
