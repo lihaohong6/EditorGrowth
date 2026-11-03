@@ -30,6 +30,10 @@ If the same browser later logs in, creates an account, or gets a temporary accou
 
 The `ReportExperiment.php` maintenance script is used to tally, clean, and print results from database tables. For example, if a user performs some actions on a browser while logged-out, and then the same user logs in to an existing account, all actions are discarded because we are interested only in converting readers into editors. This type of checking can be expensive when recording usage events, but doing expensive database operations in a one-time maintenance script run is acceptable.
 
+## Preview
+
+Use query param `?experiment=single-edit-tab-v1,source-only|some-experiment,some-bucket-name` to force enable an experiment with a specific bucket. This is for preview purposes and tracking is disabled for experiments shown this way.
+
 ## Populate data
 
 Visit the wiki anonymously. Check `localStorage` for your bucket assignment. Click the edit button to send data to the server. Follow up with account creation (optional) for some more variety in test data.

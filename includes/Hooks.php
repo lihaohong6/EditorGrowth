@@ -18,7 +18,15 @@ class Hooks implements BeforePageDisplayHook {
 
 	/** @inheritDoc */
 	public function onBeforePageDisplay( $out, $skin ): void {
-		$experiments = Experiments::getEnabled( $out->getConfig() );
+		$forced = [];
+		foreach ( explode( '|', $out->getRequest()->getText( 'experiment' ) ) as $pair ) {
+			[ $name, $bucket ] = explode( ',', $pair, 2 ) + [ '', '' ];
+			if ( isset( Experiments::EXPERIMENTS[$name]['buckets'][$bucket] ) ) {
+				$forced[$name] = $bucket;
+			}
+		}
+		$experiments = Experiments::getEnabled( $out->getConfig() )
+			+ array_intersect_key( Experiments::EXPERIMENTS, $forced );
 		if ( !$experiments ) {
 			return;
 		}
@@ -33,6 +41,9 @@ class Hooks implements BeforePageDisplayHook {
 			if ( isset( $spec['styles'] ) ) {
 				$out->addModuleStyles( $spec['styles'] );
 			}
+		}
+		if ( $forced ) {
+			$script = 'window.mwEditorGrowthForced=' . Html::encodeJsVar( $forced ) . ';' . $script;
 		}
 		$out->addHeadItem( 'editorgrowth', Html::inlineScript( $script ) );
 	}

@@ -1,5 +1,14 @@
 /* eslint-disable mediawiki/no-storage */
 ( function () {
+	// Preview via ?experiment=name,bucket|name2,bucket2
+	const forced = window.mwEditorGrowthForced;
+	if ( forced ) {
+		for ( const [ name, bucket ] of Object.entries( forced ) ) {
+			// eslint-disable-next-line mediawiki/class-doc
+			document.documentElement.classList.add( 'ext-editorgrowth-' + name + '-' + bucket );
+		}
+		return;
+	}
 	const LOCAL_STORAGE_KEY = 'mw-ext-editorgrowth';
 	let store;
 	function read() {
