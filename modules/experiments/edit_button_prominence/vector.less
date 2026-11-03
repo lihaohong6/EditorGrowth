@@ -1,12 +1,52 @@
 @import 'mediawiki.skin.variables.less';
 
 html.ext-editorgrowth-edit-button-prominence-v1-prominent body.action-view #p-views {
-	#ca-edit,
-	#ca-ve-edit {
-		background-image: linear-gradient( to top, #a7d7f9 0, @background-color-progressive-subtle--active 1px, #fff 100% );
+	#ca-view, #ca-watch, #p-cactions {
+		display: none;
+	}
 
-		a {
-			font-weight: @font-weight-bold;
-		}
+	&,
+	#ca-edit, #ca-history,
+	#ca-edit a, #ca-history a {
+		background-image: none;
+	}
+
+	#ca-edit a, #ca-history a {
+		padding-top: 12px;
+	}
+
+	#ca-edit a {
+		color: @color-inverted-fixed;
+	}
+
+	#ca-edit span {
+		background-color: @color-progressive;
+		padding: 6px 8px;
+		border-radius: 6px;
+		font-size: @font-size-small;
+		font-weight: @font-weight-bold;
+	}
+
+	#ca-edit span::before,
+	#ca-history span::before {
+		content: '';
+		display: inline-block;
+		margin-right: 4px;
+	}
+
+	#ca-edit span::before {
+		.cdx-mixin-css-icon(
+			@param-icon: @cdx-icon-edit,
+			@param-fill-color: currentcolor,
+			@param-size-icon: @size-icon-small,
+		);
+	}
+
+	#ca-history span::before {
+		.cdx-mixin-css-icon(
+			@param-icon: @cdx-icon-history,
+			@param-fill-color: currentcolor,
+			@param-size-icon: @size-icon-small,
+		);
 	}
 }
