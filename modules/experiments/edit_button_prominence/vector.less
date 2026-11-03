@@ -6,35 +6,41 @@ html.ext-editorgrowth-edit-button-prominence-v1-prominent body.action-view #p-vi
 	}
 
 	&,
-	#ca-edit, #ca-history,
-	#ca-edit a, #ca-history a {
+	#ca-edit, #ca-ve-edit, #ca-history,
+	#ca-edit a, #ca-ve-edit a, #ca-history a {
 		background-image: none;
 	}
 
-	#ca-edit a, #ca-history a {
+	#ca-edit a, #ca-ve-edit a, #ca-history a {
 		padding-top: 12px;
 	}
 
-	#ca-edit a {
+	#ca-edit a, #ca-ve-edit a {
 		color: @color-inverted-fixed;
 	}
 
-	#ca-edit span {
-		background-color: @color-progressive;
+	#ca-edit a span, #ca-ve-edit a span {
+		background-color: @background-color-progressive;
 		padding: 6px 8px;
 		border-radius: 6px;
 		font-size: @font-size-small;
 		font-weight: @font-weight-bold;
 	}
 
-	#ca-edit span::before,
-	#ca-history span::before {
+	#ca-edit a:hover span,
+	#ca-ve-edit a:hover span {
+		background-color: @background-color-progressive--hover;
+	}
+
+	#ca-edit a span::before,
+	#ca-ve-edit a span::before,
+	#ca-history a span::before {
 		content: '';
-		display: inline-block;
 		margin-right: 4px;
 	}
 
-	#ca-edit span::before {
+	#ca-edit a span::before,
+	#ca-ve-edit a span::before {
 		.cdx-mixin-css-icon(
 			@param-icon: @cdx-icon-edit,
 			@param-fill-color: currentcolor,
@@ -42,7 +48,7 @@ html.ext-editorgrowth-edit-button-prominence-v1-prominent body.action-view #p-vi
 		);
 	}
 
-	#ca-history span::before {
+	#ca-history a span::before {
 		.cdx-mixin-css-icon(
 			@param-icon: @cdx-icon-history,
 			@param-fill-color: currentcolor,
