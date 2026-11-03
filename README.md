@@ -19,6 +19,17 @@ php maintenance/run.php update
 
 Experiments are declared in `includes/Experiments.php`.
 
+## How it works
+The extension inserts a piece of render-blocking JavaScript in the document `<head>`. Before page render, the script assigns logged-out users to a random bucket for each enabled experiment and stores the assignment in `localStorage` so that the same browser keeps its bucket across visits.
+
+The script then adds an `ext-editorgrowth-<experiment>-<bucket>` class to `<html>`. Each experiment provides a CSS stylesheet that shifts the page layout depending on this class. The experiment can also supply an optional piece of render-blocking JavaScript for changes CSS cannot make.
+
+Each experiment also lists CSS selectors specifying a clickable element to track. When a tracked element is clicked, the click event is sent to a REST endpoint along with the browser's experiment and bucket. A unique browser ID is also generated when data is first sent to the server to identify the browser.
+
+If the same browser later logs in, creates an account, or gets a temporary account, the script sends the browser ID once more. The server then records which account the ID belongs to and stops storing events for it on the backend. The frontend also stops sending new events after this point. Anything else we want to know (e.g. follow-up edits) is already stored in MediaWiki's database.
+
+The `ReportExperiment.php` maintenance script is used to tally, clean, and print results from database tables. For example, if a user performs some actions on a browser while logged-out, and then the same user logs in to an existing account, all actions are discarded because we are interested only in converting readers into editors. This type of checking can be expensive when recording usage events, but doing expensive database operations in a one-time maintenance script run is acceptable.
+
 ## Populate data
 
 Visit the wiki anonymously. Check `localStorage` for your bucket assignment. Click the edit button to send data to the server. Follow up with account creation (optional) for some more variety in test data.
