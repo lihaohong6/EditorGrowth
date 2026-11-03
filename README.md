@@ -8,8 +8,14 @@ Requires MediaWiki 1.46+.
 
 ```php
 wfLoadExtension( 'EditorGrowth' );
-$wgEditorGrowthEnabledExperiments = [ 'single-edit-tab-v1' ];
+$wgEditorGrowthEnabledExperiments = [
+	'single-edit-tab-v1' => [],
+	'edit-button-prominence-v1' => [],
+];
 ```
+
+Each experiment takes options:
+- `styles` (default `true`): load the experiment's built-in styles. Set to `false` to supply your own CSS. E.g. in `MediaWiki:Common.css` create rules targeting `html.ext-editorgrowth-<experiment>-<bucket>`.
 
 Create the database tables:
 

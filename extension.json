@@ -47,6 +47,13 @@
 			"styles": [
 				"single_edit_tab.less"
 			]
+		},
+		"ext.editorGrowth.editButtonProminence": {
+			"skinStyles": {
+				"vector": "edit_button_prominence/vector.less",
+				"vector-2022": "edit_button_prominence/vector-2022.less",
+				"timeless": "edit_button_prominence/timeless.less"
+			}
 		}
 	},
 	"RestRoutes": [
@@ -76,7 +83,7 @@
 	},
 	"config": {
 		"EditorGrowthEnabledExperiments": {
-			"description": "Names of the experiments that are activated.",
+			"description": "Experiments that are activated, as an associative array of name => options.",
 			"value": []
 		}
 	},

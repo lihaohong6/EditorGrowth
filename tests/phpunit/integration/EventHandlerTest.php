@@ -21,7 +21,7 @@ class EventHandlerTest extends MediaWikiIntegrationTestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->overrideConfigValue( 'EditorGrowthEnabledExperiments', [ 'single-edit-tab-v1' ] );
+		$this->overrideConfigValue( 'EditorGrowthEnabledExperiments', [ 'single-edit-tab-v1' => [] ] );
 	}
 
 	private function post( array $body, ?UserIdentity $user = null ): int {

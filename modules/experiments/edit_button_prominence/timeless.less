@@ -1,0 +1,23 @@
+@import 'mediawiki.skin.variables.less';
+
+html.ext-editorgrowth-edit-button-prominence-v1-prominent #p-views {
+	#ca-edit a span,
+	#ca-ve-edit a span {
+		background-color: @background-color-progressive;
+		color: @color-inverted-fixed;
+		font-weight: @font-weight-bold;
+		padding: 0.25em 0.5em;
+		border-radius: 4px;
+	}
+
+	#ca-edit a:hover span,
+	#ca-ve-edit a:hover span {
+		background-color: @background-color-progressive--hover;
+	}
+
+	// Suppress default borders which look ugly under a button
+	#ca-edit:hover,
+	#ca-ve-edit:hover {
+		border-bottom-color: transparent;
+	}
+}

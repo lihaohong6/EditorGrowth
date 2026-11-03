@@ -38,7 +38,7 @@ class Hooks implements BeforePageDisplayHook {
 			static fn () => self::buildScript( $experiments )
 		);
 		foreach ( $experiments as $spec ) {
-			if ( isset( $spec['styles'] ) ) {
+			if ( isset( $spec['styles'] ) && ( $spec['options']['styles'] ?? true ) ) {
 				$out->addModuleStyles( $spec['styles'] );
 			}
 		}
