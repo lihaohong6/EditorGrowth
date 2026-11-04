@@ -38,7 +38,7 @@ The `ReportExperiment.php` maintenance script is used to tally, clean, and print
 
 ## Preview
 
-Use query param `?experiment=single-edit-tab-v1,source-only|some-experiment,some-bucket-name` to force enable an experiment with a specific bucket. This is for preview purposes and tracking is disabled for experiments shown this way.
+Use query param `?experiment=single-edit-tab-v1=source-only,some-experiment=some-bucket-name` to force enable an experiment with a specific bucket. This is for preview purposes and tracking is disabled for experiments shown this way.
 
 ## Populate data
 
