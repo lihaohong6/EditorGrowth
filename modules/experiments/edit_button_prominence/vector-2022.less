@@ -3,16 +3,16 @@
 html.ext-editorgrowth-edit-button-prominence-v1-prominent #p-views {
 	#ca-edit a span,
 	#ca-ve-edit a span {
+		padding: 0.4em 0.5em;
+		border-radius: @border-radius-base;
+		margin: -0.4em 0;
 		background-color: @background-color-progressive;
 		color: @color-inverted-fixed;
 		font-weight: @font-weight-bold;
-		margin: -0.4em 0;
-		padding: 0.4em 0.5em;
-		border-radius: @border-radius-base;
 	}
 
 	#ca-edit a:hover,
-	#ca-ve-edit a:hover  {
+	#ca-ve-edit a:hover {
 		&::after {
 			background-color: @background-color-transparent;
 		}
@@ -24,8 +24,8 @@ html.ext-editorgrowth-edit-button-prominence-v1-prominent #p-views {
 
 	#ca-edit a span::before,
 	#ca-history a span::before {
-		content: '';
 		margin-right: 4px;
+		content: '';
 	}
 
 	#ca-edit a span::before {

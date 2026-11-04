@@ -73,12 +73,14 @@ class ReportExperimentTest extends MaintenanceBaseTestCase {
 
 		$this->maintenance->loadWithArgv( [ '--experiment', self::EXPERIMENT, '--json' ] );
 		$this->maintenance->execute();
-		$report = json_decode( $this->getActualOutputForAssertion(), true );
 
 		$this->assertSame( [
-			'control' => [ 'edit_click' => 2, 'temp_account' => 1, 'new_account' => 2, 'edit_made' => 2 ],
-			'source-only' => [ 'edit_click' => 0, 'temp_account' => 0, 'new_account' => 0, 'edit_made' => 0 ],
-			'visual-only' => [ 'edit_click' => 2, 'temp_account' => 1, 'new_account' => 0, 'edit_made' => 0 ],
-		], $report['buckets'] );
+			'experiment' => self::EXPERIMENT,
+			'buckets' => [
+				'control' => [ 'edit_click' => 2, 'temp_account' => 1, 'new_account' => 2, 'edit_made' => 2 ],
+				'source-only' => [ 'edit_click' => 0, 'temp_account' => 0, 'new_account' => 0, 'edit_made' => 0 ],
+				'visual-only' => [ 'edit_click' => 2, 'temp_account' => 1, 'new_account' => 0, 'edit_made' => 0 ],
+			],
+		], json_decode( $this->getActualOutputForAssertion(), true ) );
 	}
 }

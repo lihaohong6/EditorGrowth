@@ -20,7 +20,7 @@ class Hooks implements BeforePageDisplayHook {
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$forced = [];
 		foreach ( explode( '|', $out->getRequest()->getText( 'experiment' ) ) as $pair ) {
-			[ $name, $bucket ] = explode( ',', $pair, 2 ) + [ '', '' ];
+			[ $name, $bucket ] = array_pad( explode( ',', $pair, 2 ), 2, '' );
 			if ( isset( Experiments::EXPERIMENTS[$name]['buckets'][$bucket] ) ) {
 				$forced[$name] = $bucket;
 			}

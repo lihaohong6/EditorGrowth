@@ -4,7 +4,7 @@ A/B tests interface changes to measure their effect on converting readers into e
 
 ## Install
 
-Requires MediaWiki 1.46+.
+Requires MediaWiki 1.45+.
 
 ```php
 wfLoadExtension( 'EditorGrowth' );

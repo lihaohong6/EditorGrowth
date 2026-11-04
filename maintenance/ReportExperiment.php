@@ -6,7 +6,6 @@ use MediaWiki\Extension\EditorGrowth\Experiments;
 use MediaWiki\Maintenance\Maintenance;
 use stdClass;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
-use Wikimedia\Timestamp\TimestampFormat as TS;
 
 /**
  * @ingroup Maintenance
@@ -160,7 +159,7 @@ class ReportExperiment extends Maintenance {
 	}
 
 	private static function unix( ?string $timestamp ): int {
-		return $timestamp === null ? 0 : (int)ConvertibleTimestamp::convert( TS::UNIX, $timestamp );
+		return $timestamp === null ? 0 : ( new ConvertibleTimestamp( $timestamp ) )->timestamp->getTimestamp();
 	}
 }
 

@@ -3,5 +3,6 @@
 	"extends": [
 		"wikimedia/client",
 		"wikimedia/mediawiki"
-	]
+	],
+	"ignorePatterns": [ "vendor/**" ]
 }

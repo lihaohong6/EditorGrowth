@@ -87,10 +87,9 @@
 		classes += ' ext-editorgrowth-' + name + '-' + bucket;
 	}
 	save();
-	// eslint-disable-next-line mediawiki/class-doc
 	document.documentElement.className += classes;
 
-	// For temp accounts, do not record edit events.
+	// For temp accounts, do not record edit button clicks.
 	if ( conf.wgUserIsTemp ) {
 		link( conf.wgUserName );
 		return;
