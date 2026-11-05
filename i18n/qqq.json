@@ -4,5 +4,6 @@
 			"lihaohong6"
 		]
 	},
-	"editorgrowth-desc": "Description for the extension"
+	"editorgrowth-desc": "Description for the extension",
+	"editorgrowth-editthispage": "A longer description for the edit button to make it more prominent"
 }

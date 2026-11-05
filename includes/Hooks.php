@@ -31,7 +31,7 @@ class Hooks implements BeforePageDisplayHook {
 			return;
 		}
 		$experimentString = implode( '', array_keys( $experiments ) );
-		$cacheKey = $this->cache->makeKey( 'editorgrowth-js', $experimentString );
+		$cacheKey = $this->cache->makeKey( 'editorgrowth-js', $experimentString, $out->getLanguage()->getCode() );
 		$script = $this->cache->getWithSetCallback(
 			$cacheKey,
 			WANObjectCache::TTL_HOUR,
@@ -61,6 +61,11 @@ class Hooks implements BeforePageDisplayHook {
 			];
 			if ( isset( $spec['script'] ) ) {
 				$scripts[] = self::inline( $spec['script'] );
+			}
+			if ( isset( $spec['messages'] ) ) {
+				foreach ( $spec['messages'] as $key ) {
+					$state['experiments'][$name]['messages'][$key] = wfMessage( $key )->text();
+				}
 			}
 		}
 		return implode( ';', [

@@ -28,6 +28,10 @@ class Experiments {
 				'prominent' => 1
 			],
 			'styles' => 'ext.editorGrowth.editButtonProminence',
+			'script' => 'experiments/edit_button_prominence/scripts.js',
+			'messages' => [
+				'editorgrowth-editthispage'
+			],
 			'actions' => [
 				'edit_click' => self::EDIT_CLICK,
 			],
