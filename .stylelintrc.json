@@ -8,6 +8,12 @@
 	"reportNeedlessDisables": true,
 	"rules": {
 		"no-descending-specificity": null,
-		"selector-max-id": null
+		"selector-max-id": null,
+		"wikimedia/selector-class-prefix": [
+			true,
+			{
+				"additionalPrefixes": [ "action" ]
+			}
+		]
 	}
 }
