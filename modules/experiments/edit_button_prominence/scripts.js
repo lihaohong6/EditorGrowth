@@ -1,6 +1,11 @@
 /* global mwEditorGrowth */
 // Change "edit" to "edit this page"
 ( function () {
+	if (
+		!document.documentElement.classList.contains( 'ext-editorgrowth-edit-button-prominence-v1-prominent' )
+	) {
+		return;
+	}
 	document.addEventListener( 'DOMContentLoaded', () => {
 		for ( const selector of [
 			'#ca-ve-edit a span', '#ca-edit a span'
