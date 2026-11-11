@@ -15,15 +15,14 @@ html.ext-editorgrowth-edit-button-prominence-v1-prominent body.action-view #p-vi
 		font-weight: @font-weight-bold;
 	}
 
-	#ca-edit a:hover,
-	#ca-ve-edit a:hover {
-		&::after {
-			background-color: @background-color-transparent;
-		}
+	#ca-edit a::after,
+	#ca-ve-edit a::after {
+		background-color: @background-color-transparent;
+	}
 
-		span {
-			background-color: @background-color-progressive--hover;
-		}
+	#ca-edit a:hover span,
+	#ca-ve-edit a:hover span {
+		background-color: @background-color-progressive--hover;
 	}
 
 	#ca-edit a span::before,
